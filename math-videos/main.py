@@ -19,7 +19,7 @@ def main():
     transcriber = Transcriber("520969975c1f4e34b723af013a097182")
     audio_gen = AudioGenerator()
     subtitle_gen = SubtitleGenerator(transcriber)
-    video_editor = VideoEditor('/Users/haris/Desktop/edu-video-creator-backend/math-videos/assets/background.jpg', '/Users/haris/Desktop/edu-video-creator-backend/math-videos/assets/melody.mp3')
+    video_editor = VideoEditor('/Users/haris/Desktop/edu-video-creator-backend/math-videos/assets/background1.jpg', '/Users/haris/Desktop/edu-video-creator-backend/math-videos/assets/melody.mp3')
 
     # Generate audio
     intro_audio = '/Users/haris/Desktop/edu-video-creator-backend/math-videos/temp/introduction.mp3' if intro else None
@@ -38,7 +38,7 @@ def main():
     conclusion_sub_clips = subtitle_gen.generate_subtitles_clip(conclusion_subs)
 
     # Setup background clip
-    music_clip = AudioFileClip(video_editor.music_path).subclip(30, 60).fx(volumex, 0.3).audio_fadein(2).audio_fadeout(2)
+    music_clip = AudioFileClip(video_editor.music_path).subclip(30, 60).fx(volumex, 0.25).audio_fadein(2).audio_fadeout(2)
     bg_clip = ImageClip(video_editor.bg_path).resize(width=1920)
 
     # Generate example clips

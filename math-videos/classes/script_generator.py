@@ -13,7 +13,7 @@ class ScriptGenerator:
         1. An introductory text explaining the {topic} in Bulgarian. Go deep into the subject and provide a thorough explanation. This is a script for an educational video!
         2. Three examples, each with a type of 'text' and 'equation'. Before the examples start, include a text tag indicating that examples are beginning.
         3. A conclusion summarizing the topic.
-        4. If you use these symbols: ≥ or ≤, use =< and >= instead.
+        4. If you use these symbols: ≥ or ≤, use =< and >= instead.If you use * use x, when you use more complex symbols, use simpler symbols
         5. Ensure the topic is explained in a way that everyone can understand.
 
         Example structure:
