@@ -1,4 +1,5 @@
 from moviepy.editor import *
+import os
 import json
 import replicate
 from dotenv import load_dotenv
@@ -9,7 +10,7 @@ from moviepy.audio.fx.volumex import volumex
 import textwrap
 import edge_tts
 import asyncio
-from better_bing_image_downloader import downloader
+from bing_image_downloader import downloader
 # Configure ImageMagick path
 change_settings({"IMAGEMAGICK_BINARY": "/usr/local/bin/magick"})  # Adjust the path if needed
 
@@ -80,7 +81,7 @@ async def generate_text_audio(text, name):
     await tts.save(f'{name}.mp3')
 
 def download_image(query):
-    downloader(query, limit=1, output_dir='images')
+    downloader.download(query, limit=1, output_dir='images')
 
 def get_subtitles(audio_url):
     transcript = transcriber.transcribe(audio_url)
@@ -108,6 +109,9 @@ def generate_intro_clip():
     
     return final_clip
 
+def generate_lesson_sections(lesson, query):
+    download_image(query)
+    lesson_clip = TextClip(lesson, fontsize=200, color="white", method='caption', stroke_color="black", stroke_width=6, font="Beyne-Regular").set_position('center', 'center')
 
 final_clip = generate_intro_clip()
 final_clip.write_videofile('intro.mp4', fps=16)
